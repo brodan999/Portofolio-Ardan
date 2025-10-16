@@ -7,13 +7,56 @@ const navLinksArray = document.querySelectorAll(".navbar a");
 const sections = document.querySelectorAll("section");
 const header = document.querySelector("header");
 
-// ======== TOGGLE MENU (HAMBURGER) ========
+// ======== TOGGLE MENU (HAMBURGER)  and scroll ========
 toggle.addEventListener('click', () => {
   menuList.classList.toggle("show");
   navbar.classList.toggle('active');
   icon.classList.toggle('fa-bars');
   icon.classList.toggle('fa-xmark');
 });
+
+// ======== SCROLL BEHAVIOR ========
+let lastScrollY = window.scrollY;
+let ticking = false;
+const scrollThreshold = 50; // seberapa sensitif navbar muncul
+
+window.addEventListener("scroll", () => {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const currentScroll = window.scrollY;
+
+      // 🔹 Sembunyikan navbar jika scroll ke bawah
+      if (currentScroll > lastScrollY && currentScroll > scrollThreshold) {
+        header.style.top = "-100px";
+      }
+      // 🔹 Tampilkan navbar jika scroll ke atas sedikit
+      else if (currentScroll < lastScrollY) {
+        header.style.top = "0";
+      }
+
+      lastScrollY = currentScroll;
+      ticking = false;
+    });
+
+    ticking = true;
+  }
+
+  // 🔹 Highlight link aktif sesuai posisi scroll
+  const navbarHeight = header.offsetHeight;
+  let current = "";
+
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - navbarHeight - 100;
+    if (scrollY >= sectionTop) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinksArray.forEach(link => {
+    link.classList.toggle("active", link.getAttribute("href") === "#" + current);
+  });
+});
+
 
 // ======== SMOOTH SCROLL (JAVASCRIPT ONLY) ========
 function smoothScroll(target, duration = 800) {

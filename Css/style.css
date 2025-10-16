@@ -1,28 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 /* === RESET & DASAR === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
 html, body {
   overflow-x: hidden;
   max-width: 100%;
+  background: #0f0f0f;
+  color: #eee;
 }
 
+/* === SECTION ANIMATION === */
 section {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-
 section.visible {
   opacity: 1;
   transform: translateY(0);
-
 }
-/* POPUP STYLE */
+
+/* === POPUP === */
 .popup {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.8);
   display: flex; align-items: center; justify-content: center;
   z-index: 1000;
   backdrop-filter: blur(10px);
@@ -36,7 +44,6 @@ section.visible {
   padding: 30px 40px;
   text-align: center;
   width: 400px;
-  position: relative;
   animation: fadeIn 0.4s ease;
 }
 
@@ -66,55 +73,8 @@ section.visible {
   cursor: pointer;
   transition: 0.3s;
 }
-
 .popup-content button:hover {
   background-color: #0056b3;
-}
-
-/* PORTFOLIO SECTION */
-.home {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 80px 10%;
-}
-
-.name {
-  color: #00ff99;
-}
-
-.buttons .cv {
-  background: #00ff99;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
-  margin-right: 10px;
-}
-
-.buttons .more {
-  background: transparent;
-  border: 1px solid #00ff99;
-  color: #00ff99;
-  padding: 10px 20px;
-  border-radius: 8px;
-}
-
-.profile-pic {
-  border-radius: 50%;
-  width: 300px;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background: #0f0f0f;
-  color: #eee;
 }
 
 /* === HEADER / NAVBAR === */
@@ -129,9 +89,10 @@ header {
   top: 0;
   z-index: 1000;
   padding: 20px 80px;
+  transition: top 0.4s ease; /* tambahkan ini untuk animasi */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
-/* === LOGO === */
 .logo img {
   width: 170px;
   height: auto;
@@ -139,7 +100,6 @@ header {
   cursor: pointer;
 }
 
-/* === NAVBAR === */
 .navbar {
   display: flex;
   align-items: center;
@@ -192,108 +152,26 @@ header {
   z-index: 1100;
 }
 
-/* === RESPONSIVE (MOBILE) === */
-@media (max-width: 900px) {
-  header {
-    padding: 15px 25px;
-  }
-
-  /* 🔹 Tampilkan tombol garis 3 hanya di mobile */
-  .menu-toggle {
-    display: block;
-  }
-
-  /* 🔹 Sembunyikan menu di awal */
-  .navbar ul {
-    position: absolute;
-    top: 70px;
-    right: -100%;
-    background: #111;
-    flex-direction: column;
-    gap: 25px;
-    width: 220px;
-    padding: 30px 0;
-    text-align: center;
-    border-radius: 10px;
-    transition: right 0.4s ease;
-    border-top: 1px solid #1f1f1f;
-  }
-
-  /* 🔹 Saat toggle aktif */
-  .navbar.active ul {
-    right: 25px;
-  }
-
-  .navbar a {
-    color: #fff;
-    font-size: 18px;
-  }
-
-  .navbar a:hover {
-    color: #00ff7f;
-  }
-
-  /* 🔹 Layout bagian home */
-  .home {
-    flex-direction: column-reverse;
-    align-items: center;
-    padding: 40px 20px;
-    text-align: center;
-  }
-
-  .home-text {
-    max-width: 100%;
-  }
-
-  .home-img img {
-    width: 220px;
-    margin-bottom: 30px;
-  }
-
-  .skills-container {
-    gap: 25px;
-  }
-
-  .skill {
-    width: 100px;
-    padding: 15px;
-  }
-}
-
-/* === ANIMATION === */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
 /* === HOME === */
 .home {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 80px;
+  padding: 80px 10%;
   flex-wrap: wrap;
 }
+
 #greeting {
-  font-family: "Poppins", sans-serif;
   font-weight: 600;
   font-size: 32px;
   margin-bottom: 10px;
   letter-spacing: 1px;
-  text-transform: capitalize;
   animation: fadeInHello 0.8s ease-in-out;
 }
 
 #usernameDisplay {
-  color: #00ff88; /* atau warna hijau neon yang kamu pakai */
-  font-weight: 600; /* biar agak tebal */
+  color: #00ff88;
+  font-weight: 600;
 }
 
 .home-text {
@@ -339,16 +217,13 @@ header {
   background: #00ff7f;
   color: #000;
 }
-
 .btn.cv:hover {
   background: #00cc66;
 }
-
 .btn.outline {
   border: 1px solid #00ff7f;
   color: #00ff7f;
 }
-
 .btn.outline:hover {
   background: #00ff7f;
   color: #000;
@@ -359,10 +234,9 @@ header {
   border-radius: 20px;
 }
 
-/* About Me */
-/* ABOUT SECTION */
+/* === ABOUT === */
 .about-section {
-  background-color: #121212; /* sama seperti home */
+  background-color: #121212;
   color: #eaeaea;
   padding: 80px 10%;
   display: flex;
@@ -403,7 +277,6 @@ header {
   font-size: 1rem;
   color: #00ff88;
   font-weight: 600;
-  letter-spacing: 0.5px;
   margin-bottom: 20px;
 }
 
@@ -419,32 +292,15 @@ header {
 }
 
 .about-socials a {
-  text-decoration: none; /* Hilangkan garis bawah */
-  color: #fff; /* Warna ikon, sesuaikan dengan tema kamu */
-  margin: 0 10px; /* Jarak antar ikon */
-  font-size: 24px; /* Ukuran ikon */
+  text-decoration: none;
+  color: #fff;
+  margin: 0 10px;
+  font-size: 24px;
   transition: transform 0.2s ease, color 0.2s ease;
 }
-
 .about-socials a:hover {
-  transform: scale(1.2); /* Efek zoom pas hover */
-  color: #00ff99; /* Ganti warna ikon saat hover */
-}
-
-/* Responsif untuk mobile */
-@media (max-width: 900px) {
-  .about-container {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .about-image img {
-    width: 250px;
-  }
-
-  .about-content h2 {
-    font-size: 2rem;
-  }
+  transform: scale(1.2);
+  color: #00ff99;
 }
 
 /* === SKILLS === */
@@ -452,20 +308,17 @@ header {
   text-align: center;
   padding: 60px 20px;
 }
-
 .skills h2 {
   font-size: 1.8rem;
   color: #fff;
   margin-bottom: 40px;
 }
-
 .skills-container {
   display: flex;
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
 }
-
 .skill {
   background: #1b1b1b;
   padding: 20px;
@@ -473,47 +326,44 @@ header {
   width: 120px;
   transition: 0.3s;
 }
-
 .skill:hover {
   transform: translateY(-10px);
   box-shadow: 0 0 15px rgba(0,255,127,0.3);
 }
-
 .skill img {
   width: 50px;
   margin-bottom: 10px;
 }
-
 .skill p {
   color: #ccc;
 }
 
-
-/* Project */
-.projects {
+/* === PROJECTS === */
+.projects, #projects {
   text-align: center;
   padding: 60px 20px;
   background-color: #1c1c1c;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  position: relative;
+  z-index: 1;
 }
-
 .section-title {
   font-size: 2rem;
   color: #fff;
   margin-bottom: 10px;
 }
-
 .section-subtitle {
   color: #ccc;
   margin-bottom: 20px;
 }
-
 .filter-buttons {
   display: flex;
   justify-content: center;
   gap: 10px;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
-
 .filter-btn {
   border: none;
   padding: 8px 20px;
@@ -522,22 +372,18 @@ header {
   cursor: pointer;
   font-weight: 600;
 }
-
 .filter-btn.active {
   background-color: #00b050;
   color: white;
 }
-
 .project-container {
   display: flex;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  align-items: stretch; /* ini menjaga tinggi card sama rata */
+  align-items: stretch;
+  margin-top: 20px;
 }
-
 .project-card {
   background-color: #2b2b2b;
   border-radius: 10px;
@@ -551,10 +397,12 @@ header {
   overflow: hidden;
   text-decoration: none;
   text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+.project-card:hover {
+  transform: translateY(-5px);
+}
 .project-image {
-  background-color: #ccc;
   height: 200px;
   border-radius: 8px;
   margin-bottom: 15px;
@@ -567,83 +415,66 @@ header {
   object-fit: cover;
   transition: transform 0.3s ease;
 }
-
 .project-card:hover .project-image img {
   transform: scale(1.05);
 }
 
-/* Mesagge */
-/* CONTACT SECTION */
+/* === CONTACT === */
 .contact-section {
   background-color: #121212;
   color: #eaeaea;
   padding: 80px 10%;
-  font-family: 'Poppins', sans-serif;
 }
-
 .contact-container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 40px;
-  max-width: 100%;
   margin: 0 auto;
 }
-
-/* Info Section */
 .contact-info {
   flex: 1;
   min-width: 260px;
 }
-
 .contact-info h2 {
   font-size: 2.2rem;
   margin-bottom: 5px;
   color: #fff;
 }
-
 .contact-info .subtitle {
   color: #a1a1a1;
   margin-bottom: 30px;
 }
-
 .contact-item {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-bottom: 25px;
 }
-
 .contact-item i {
   font-size: 1.5rem;
   color: #00ff88;
 }
-
 .contact-item h4 {
   margin-bottom: 3px;
   font-size: 1rem;
   color: #fff;
 }
-
 .contact-item p {
   font-size: 0.95rem;
   color: #bdbdbd;
 }
-
-/* Form Section */
 .contact-form {
   flex: 1.2;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-
 .form-row {
   display: flex;
   gap: 15px;
 }
-
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -656,26 +487,14 @@ header {
   outline: none;
   transition: border-color 0.3s ease, background-color 0.3s ease;
 }
-
-/* Fokus efek */
 .contact-form input:focus,
 .contact-form textarea:focus {
   border: 1px solid #00ff88;
 }
-
-/* Error State */
-.contact-form input.error,
-.contact-form textarea.error {
-  border: 1px solid #ff4d4d !important;
-}
-
-/* Textarea fix ukuran */
 .contact-form textarea {
   resize: none;
   min-height: 120px;
 }
-
-/* Tombol kirim */
 .btn-submit {
   background-color: #00ff88;
   color: #000;
@@ -689,43 +508,16 @@ header {
   align-self: flex-start;
   box-shadow: 0 4px 10px rgba(0, 255, 136, 0.2);
 }
-
-.btn-submit i {
-  margin-left: 8px;
-}
-
 .btn-submit:hover {
   background-color: #00cc6d;
   transform: translateY(-2px);
 }
-
-/* Pesan status form */
 #formStatus {
   margin-top: 8px;
   font-size: 0.9rem;
   font-weight: 500;
   transition: 0.3s ease;
 }
-
-/* Responsif */
-@media (max-width: 480px) {
-  .contact-container {
-    flex-direction: column;
-  }
-
-  .form-row {
-    flex-direction: column;
-  }
-
-  .btn-submit {
-    align-self: center;
-  }
-
-  .contact-info {
-    text-align: center;
-  }
-}
-
 
 /* === FOOTER === */
 footer {
@@ -734,32 +526,37 @@ footer {
   border-top: 1px solid #222;
   margin-top: 60px;
 }
-
 footer p {
   color: #aaa;
   margin-bottom: 10px;
 }
-
 .socials a {
   color: #00ff7f;
   margin: 0 10px;
   font-size: 1.4rem;
   transition: 0.3s;
 }
-
 .socials a:hover {
   color: #fff;
 }
 
-/* === RESPONSIVE SECTION === */
+/* === ANIMATION === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === RESPONSIVE === */
 @media (max-width: 900px) {
   header {
-    padding: 20px 40px;
+    padding: 15px 25px;
   }
-
+  .menu-toggle {
+    display: block;
+  }
   .navbar ul {
     position: absolute;
-    top: 75px;
+    top: 70px;
     right: -100%;
     background: #111;
     flex-direction: column;
@@ -770,34 +567,67 @@ footer p {
     border-radius: 10px;
     transition: right 0.4s ease;
   }
-
   .navbar.active ul {
-    right: 0;
+    right: 25px;
   }
-
   .home {
     flex-direction: column-reverse;
     align-items: center;
     padding: 40px 20px;
     text-align: center;
   }
-
-  .home-text {
-    max-width: 100%;
-  }
-
   .home-img img {
     width: 220px;
     margin-bottom: 30px;
   }
-
   .skills-container {
     gap: 25px;
   }
-
   .skill {
     width: 100px;
     padding: 15px;
+  }
+  .about-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-image img {
+    width: 250px;
+  }
+  .about-content h2 {
+    font-size: 2rem;
+  }
+  .contact-container {
+    flex-direction: column;
+  }
+  .form-row {
+    flex-direction: column;
+  }
+  .btn-submit {
+    align-self: center;
+  }
+  .contact-info {
+    text-align: center;
+  }
+  .project-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .project-card {
+    width: 90%;
+    max-width: 360px;
+  }
+    .contact-item {
+    justify-content: flex-start; /* biar ikon + teks tetap sejajar kiri */
+  }
+
+  .contact-item div {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .contact-item i {
+    font-size: 20px;
   }
 }
 
