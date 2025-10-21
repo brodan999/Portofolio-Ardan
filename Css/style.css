@@ -11,7 +11,7 @@
 html, body {
   overflow-x: hidden;
   max-width: 100%;
-  background: #0f0f0f;
+  background: #000;
   color: #eee;
 }
 
@@ -83,14 +83,12 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #0f0f0f;
-  border-bottom: 1px solid #1f1f1f;
-  position: sticky;
+  backdrop-filter: blur(10px);
+  position: fixed;
   top: 0;
   z-index: 1000;
   padding: 20px 80px;
   transition: top 0.4s ease; /* tambahkan ini untuk animasi */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .logo img {
@@ -153,13 +151,39 @@ header {
 }
 
 /* === HOME === */
-.home {
+#home {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 80px 10%;
+  padding: 150px 10%;
+  background-color: #000;
   flex-wrap: wrap;
+  overflow: hidden; /* biar gambar tidak keluar dari area */
+  min-height: 100vh;
 }
+
+.bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;       /* lebar penuh */
+  height: auto;
+  object-fit: cover; /* agar proporsi gambar tetap bagus */
+  z-index: -1;       /* letakkan di belakang teks */
+}
+
+/*
+#home::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('../Img/Backg.jpg') center/cover no-repeat;
+  z-index: -1;
+}
+*/
 
 #greeting {
   font-weight: 600;
@@ -200,7 +224,7 @@ header {
 
 .home-text p {
   line-height: 1.6;
-  color: #ccc;
+  color: #fff;
   margin-bottom: 25px;
 }
 
@@ -236,7 +260,7 @@ header {
 
 /* === ABOUT === */
 .about-section {
-  background-color: #121212;
+  background-color: #000;
   color: #eaeaea;
   padding: 80px 10%;
   display: flex;
@@ -307,6 +331,7 @@ header {
 .skills {
   text-align: center;
   padding: 60px 20px;
+  background-color: #000;
 }
 .skills h2 {
   font-size: 1.8rem;
@@ -342,7 +367,7 @@ header {
 .projects, #projects {
   text-align: center;
   padding: 60px 20px;
-  background-color: #1c1c1c;
+  background-color: #000;
   opacity: 1 !important;
   transform: translateY(0) !important;
   position: relative;
@@ -524,7 +549,7 @@ footer {
   text-align: center;
   padding: 40px 0;
   border-top: 1px solid #222;
-  margin-top: 60px;
+  background-color: #000;
 }
 footer p {
   color: #aaa;
@@ -548,6 +573,33 @@ footer p {
 
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
+    .popup-content {
+    width: 50%;              /* otomatis menyesuaikan lebar layar */
+    padding: 10px 10px;      /* kurangi padding agar tidak terlalu besar */
+    border-radius: 12px;     /*0kecilkan radius sudut */
+    aspect-ratio: 1 / 1;
+  }
+
+  .popup-img {
+    width: 70px;            /* perkecil gambar di popup */
+  }
+
+  .popup-content input {
+    padding: 8px;            /* sesuaikan ukuran input */
+  }
+
+  .popup-content button {
+    padding: 8px 20px;       /* lebih proporsional di layar kecil */
+    font-size: 12px;         /* teks tombol lebih pas di mobile */
+  }
+  .popup-content h2 {
+    font-size: 14px;          /* kecilin judul */
+    margin: 4px 0;
+  }
+  .popup-content p{
+    font-size: 12px;
+  }
+
   header {
     padding: 15px 25px;
   }
@@ -575,6 +627,10 @@ footer p {
     align-items: center;
     padding: 40px 20px;
     text-align: center;
+  }
+  .bg-img {
+    height: 100vh; /* pastikan tetap penuh */
+    object-position: center; /* fokus di tengah gambar */
   }
   .home-img img {
     width: 220px;
