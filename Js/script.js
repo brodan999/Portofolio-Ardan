@@ -9,10 +9,12 @@ const header = document.querySelector("header");
 
 // ======== TOGGLE MENU (HAMBURGER)  and scroll ========
 toggle.addEventListener('click', () => {
-  menuList.classList.toggle("show");
+  // toggle menu dan ubah ikon
   navbar.classList.toggle('active');
-  icon.classList.toggle('fa-bars');
-  icon.classList.toggle('fa-xmark');
+
+  const isActive = navbar.classList.contains('active');
+  icon.classList.toggle('fa-bars', !isActive);
+  icon.classList.toggle('fa-xmark', isActive);
 });
 
 // ======== SCROLL BEHAVIOR ========
@@ -96,7 +98,7 @@ navLinksArray.forEach(anchor => {
     const target = this.getAttribute('href');
     smoothScroll(target, 1000);
 
-    menuList.classList.remove("show");
+    navbar.classList.remove("active");
     icon.classList.add('fa-bars');
     icon.classList.remove('fa-xmark');
   });
