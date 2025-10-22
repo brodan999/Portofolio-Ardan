@@ -573,15 +573,15 @@ footer p {
 
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
-    .popup-content {
-    width: 50%;              /* otomatis menyesuaikan lebar layar */
-    padding: 10px 10px;      /* kurangi padding agar tidak terlalu besar */
+  .popup-content {
+    width: 60%;              /* otomatis menyesuaikan lebar layar */
+    padding: 5px 5px;      /* kurangi padding agar tidak terlalu besar */
     border-radius: 12px;     /*0kecilkan radius sudut */
     aspect-ratio: 1 / 1;
   }
 
   .popup-img {
-    width: 70px;            /* perkecil gambar di popup */
+    width: 80px;            /* perkecil gambar di popup */
   }
 
   .popup-content input {
@@ -593,11 +593,11 @@ footer p {
     font-size: 12px;         /* teks tombol lebih pas di mobile */
   }
   .popup-content h2 {
-    font-size: 14px;          /* kecilin judul */
+    font-size: 15px;          /* kecilin judul */
     margin: 4px 0;
   }
   .popup-content p{
-    font-size: 12px;
+    font-size: 15px;
   }
 
   header {
