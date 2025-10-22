@@ -575,7 +575,7 @@ footer p {
 @media (max-width: 900px) {
   .popup-content {
     width: 60%;              /* otomatis menyesuaikan lebar layar */
-    padding: 5px 5px;      /* kurangi padding agar tidak terlalu besar */
+    padding: 10px 10px;      /* kurangi padding agar tidak terlalu besar */
     border-radius: 12px;     /*0kecilkan radius sudut */
     aspect-ratio: 1 / 1;
   }
@@ -670,8 +670,9 @@ footer p {
     align-items: center;
   }
   .project-card {
-    width: 90%;
-    max-width: 360px;
+    width: 100%;
+    max-width: 350px;
+    max-height: 500px;
   }
     .contact-item {
     justify-content: flex-start; /* biar ikon + teks tetap sejajar kiri */
